@@ -1,4 +1,4 @@
-var gpiop = require("rpi-gpio");
+var gpio = require("rpi-gpio");
 
 gpio.setup(37, gpio.DIR_IN, gpio.EDGE_BOTH);
 gpio.on("change", function (channel, value) {
