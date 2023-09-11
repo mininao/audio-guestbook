@@ -4,7 +4,7 @@ const fs = require("fs"),
 const AudioRecorder = require("node-audiorecorder");
 
 // Folder with current date and time appended
-const DIRECTORY = "recs-" + new Date().toISOString().replace(/:/g, "-");
+const DIRECTORY = "recs/recs-" + new Date().toISOString().replace(/:/g, "-");
 
 // Create path to write recordings to.
 if (!fs.existsSync(DIRECTORY)) {
