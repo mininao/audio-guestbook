@@ -16,7 +16,24 @@ gpioPickup.setR('pu');
 let gpioLed = r.out(GPIO_LED_PIN);
 
 let recordingStartedAt = undefined;
-const MAXIMUM_RECORDING_DURATION_MS = 1000 * 5
+const MAXIMUM_RECORDING_DURATION_MS = 1000 * 60 // 60 seconds
+
+setInterval(()=>{
+  if(!recordingStartedAt) return;
+  const recordingDuration = Date.now() - recordingStartedAt;
+  if(recordingDuration > MAXIMUM_RECORDING_DURATION_MS) {
+    console.log("Maximum duraction exceeded, stopping recording")
+    stopRecording();
+    gpioLed.off();
+    recordingStartedAt = undefined
+  }
+},1000)
+
+setInterval(()=>{
+  if(recordingStartedAt) return;
+  gpioLed.on();
+  gpioLed.off(100);
+},5000)
 
 setInterval(()=>{
   if(!recordingStartedAt) return;
