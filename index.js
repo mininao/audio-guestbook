@@ -21,7 +21,7 @@ function onGpioPickupChange(channel, value) {
   }
 }
 
-const debouncedOnGpioPickupChange = debounce(onGpioPickupChange, 500);
+const debouncedOnGpioPickupChange = debounce(onGpioPickupChange, 750);
 
 gpio.on("change", function (channel, value) {
   console.log("Channel " + channel + " value is now " + value);
